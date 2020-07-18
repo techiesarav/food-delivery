@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -26,6 +26,16 @@ public class Food {
 	@OneToMany(mappedBy="food")
 	private List<Orders> order;
 	
+	@ManyToMany(mappedBy="foods")
+    List<Restaurant> restaurants = new ArrayList<>();
+	
+	public List<Restaurant> getRestaurants() {
+		return restaurants;
+	}
+
+	public void setRestaurants(List<Restaurant> restaurants) {
+		this.restaurants = restaurants;
+	}
 
 	protected Food() {
 		super();
